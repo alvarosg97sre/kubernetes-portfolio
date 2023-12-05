@@ -15,6 +15,6 @@ spec:
     spec:
       containers:
       - name: portfolio-container
-        image: alvarosg97/portfolio:1701774025
+        image: alvarosg97/portfolio:latest
         ports:
         - containerPort: 80 
