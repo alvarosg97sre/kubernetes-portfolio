@@ -1,0 +1,35 @@
+
+# Mi deployment el cual tiene el puerto 80 en el contendore
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mi-portfolio
+spec:
+  replicas: 4 
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+      - name: portfolio-container
+        image: alvarosg97/portfolio:1702628528
+        ports:
+        - containerPort: 80
+---
+
+# servicio que abra el puerto de mi app con clusterip
+apiVersion: v1
+kind: Service
+metadata:
+  name: mi-portfolio-svc
+spec:
+  selector:
+    app: portfolio
+  ports:
+  - port: 80
+    targetPort: 80
+
